@@ -1,8 +1,7 @@
 #include "TelCoColorCoder.h"
 #include "ColorTest.h"
 
-namespace TelCoColorCoder {
-    ColorPair GetColorFromPairNumber(int pairNumber) {
+TelCoColorCoder::ColorPair TelCoColorCoder::GetColorFromPairNumber(int pairNumber) {
         int zeroBasedPairNumber = pairNumber - 1;
         MajorColor majorColor =
             (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
@@ -10,17 +9,18 @@ namespace TelCoColorCoder {
             (MinorColor)(zeroBasedPairNumber % numberOfMinorColors);
         return ColorPair(majorColor, minorColor);
     }
-    int GetPairNumberFromColor(MajorColor major, MinorColor minor) {
+    
+int TelCoColorCoder::GetPairNumberFromColor(MajorColor major, MinorColor minor) {
         return major * numberOfMinorColors + minor + 1;
-    }
 }
 
 std::string ToString() {
    
     int colorno=1;
+    int no_colors = TelCoColorCoder::numberOfMajorColors * TelCoColorCoder::numberOfMinorColors;
     std::string list;
 
-        for (; colorno <= 25; colorno++) {
+        for (; colorno <= no_colors; colorno++) {
             list += std::to_string(colorno);
             list += " ";
             TelCoColorCoder::ColorPair colorPair = TelCoColorCoder::GetColorFromPairNumber(colorno);
@@ -36,6 +36,6 @@ int main() {
 
     testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
     testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
-  
+
     return 0;
 }
