@@ -19,7 +19,6 @@ std::string ToString() {
     int colorno=1;
     int no_colors = TelCoColorCoder::numberOfMajorColors * TelCoColorCoder::numberOfMinorColors;
     std::string list;
-
         for (; colorno <= no_colors; colorno++) {
             list += std::to_string(colorno);
             list += " ";
